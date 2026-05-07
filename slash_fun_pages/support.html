@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Support page of the slash.fun platform -->
+<head>
+  <meta charset="UTF-8" />
+  <title>slash.fun - Support</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
+  <style>
+    :root {
+      --bg-dark: #0c0f11;
+      --card-bg: #14181d;
+      --nav-bg: #14181d;
+      --accent: #4ba3ff;
+      --accent-hover: #2d7bce;
+      --text-light: #f5f5f5;
+      --text-muted: #8fa1b5;
+    }
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+    #app {
+      display: flex;
+      height: 100vh;
+    }
+    nav {
+      width: 220px;
+      background-color: var(--nav-bg);
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+    }
+    nav .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      padding: 0 20px 20px;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav li {
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    nav li a {
+      display: flex;
+      align-items: center;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    nav li a i {
+      margin-right: 12px;
+      width: 20px;
+      text-align: center;
+    }
+    nav li:hover, nav li.active {
+      background-color: #1f262e;
+    }
+    nav li:hover a, nav li.active a {
+      color: var(--text-light);
+    }
+    nav .create-btn-sidebar {
+      margin: 20px;
+      padding: 10px;
+      background-color: var(--accent);
+      color: var(--bg-dark);
+      text-align: center;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+    }
+    nav .create-btn-sidebar:hover {
+      background-color: var(--accent-hover);
+    }
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: var(--bg-dark);
+      border-bottom: 1px solid #1f262e;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .search-box {
+      flex: 1;
+      background-color: var(--card-bg);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+    }
+    .search-box i {
+      margin-right: 8px;
+      color: var(--text-muted);
+    }
+    .search-box input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+    .topbar button {
+      margin-left: 10px;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+    .topbar .voice-btn {
+      background-color: var(--card-bg);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+    }
+    .topbar .voice-btn i {
+      margin-right: 6px;
+    }
+    .topbar .create-btn {
+      background-color: var(--accent);
+      color: var(--bg-dark);
+    }
+    .topbar .create-btn:hover {
+      background-color: var(--accent-hover);
+    }
+    .topbar .signin-btn {
+      background-color: var(--card-bg);
+      color: var(--text-muted);
+      border: 1px solid #2b3542;
+    }
+    .section {
+      padding: 20px;
+    }
+    .section h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .info-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 20px;
+      flex: 1;
+      min-width: 280px;
+    }
+    .info-card h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+    .info-card p {
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    .modal-content {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .modal-content .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .modal-content h2 {
+      margin-top: 0;
+    }
+    .modal-content label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #b0c2d9;
+    }
+    .modal-content input[type="text"],
+    .modal-content input[type="file"],
+    .modal-content textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: none;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-size: 15px;
+    }
+    .modal-content textarea {
+      resize: vertical;
+    }
+    .modal-content .toggle-group {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .modal-content .toggle-group input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+    .modal-content button.submit-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: var(--accent);
+      color: var(--bg-dark);
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .modal-content button.submit-btn:hover {
+      background-color: var(--accent-hover);
+    }
+    .modal-content .note {
+      font-size: 0.8em;
+      color: #6f8098;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <nav>
+      <div class="logo">slash.fun</div>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="callouts.html"><i class="fas fa-bullhorn"></i>Callouts</a></li>
+        <li><a href="live.html"><i class="fas fa-broadcast-tower"></i>Live</a></li>
+        <li class="active"><a href="support.html"><i class="fas fa-life-ring"></i>Support</a></li>
+        <li><a href="chat.html"><i class="fas fa-comments"></i>Chat</a></li>
+        <li><a href="terminal.html"><i class="fas fa-terminal"></i>Terminal</a></li>
+        <li><a href="more.html"><i class="fas fa-ellipsis-h"></i>More</a></li>
+      </ul>
+      <div class="create-btn-sidebar" onclick="showModal()">Create</div>
+    </nav>
+    <div class="content">
+      <div class="topbar">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search the documentation..." />
+        </div>
+        <button class="voice-btn"><i class="fas fa-microphone"></i> Voice chat</button>
+        <button class="create-btn" onclick="showModal()">+ Create</button>
+        <button class="signin-btn">Sign in</button>
+      </div>
+      <section class="section">
+        <h2>Contact support</h2>
+        <div class="card-container">
+          <div class="info-card">
+            <h3><i class="fas fa-envelope"></i> Email</h3>
+            <p>For general questions or feedback, email us at <strong>support@slash.fun</strong>. We reply within 24 hours.</p>
+          </div>
+          <div class="info-card">
+            <h3><i class="fas fa-discord"></i> Discord</h3>
+            <p>Join our Discord community to talk with other creators and get real-time support.</p>
+          </div>
+          <div class="info-card">
+            <h3><i class="fas fa-info-circle"></i> FAQ</h3>
+            <p>Visit the FAQ page for the most common questions and solutions.</p>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        <div class="info-card">
+          <h3>What does it cost to create a token?</h3>
+          <p>Creating a token on slash.fun only requires paying gas fees on Base. We do not charge launch fees or any hidden commissions.</p>
+          <h3>What happens to the token liquidity?</h3>
+          <p>Liquidity is created automatically on Uniswap-Base and locked to protect creators and investors. The creator keeps 5% of the supply and receives 66% of LP fees, as described on Basecamp.</p>
+          <h3>Can I add images or video clips?</h3>
+          <p>Yes! You can add an image or video to your token. We accept images (.jpg, .png, .gif) up to 15 MB and videos (.mp4) up to 30 MB. The recommended minimum resolution is 1000x1000 px for images and 1080p for video.</p>
+        </div>
+      </section>
+    </div>
+    <div class="modal-overlay" id="modal">
+      <div class="modal-content">
+        <button class="close-btn" onclick="hideModal()">&times;</button>
+        <h2>Create a new token</h2>
+        <label for="token-name">Token name</label>
+        <input id="token-name" type="text" placeholder="Ex: MemeX" />
+        <label for="token-ticker">Ticker</label>
+        <input id="token-ticker" type="text" placeholder="Ex: MEMEX" />
+        <label for="token-desc">Description (optional)</label>
+        <textarea id="token-desc" rows="3" placeholder="Write a short description"></textarea>
+        <label for="token-social">Social links (optional)</label>
+        <input id="token-social" type="text" placeholder="https://x.com/your-profile" />
+        <div class="toggle-group">
+          <input id="toggle-mayhem" type="checkbox" />
+          <label for="toggle-mayhem">Mayhem mode (rapid volume growth, active 24h)</label>
+        </div>
+        <div class="toggle-group">
+          <input id="toggle-agent" type="checkbox" />
+          <label for="toggle-agent">Tokenized agent (buybacks & automated burns)</label>
+        </div>
+        <div class="toggle-group">
+          <input id="toggle-cashback" type="checkbox" />
+          <label for="toggle-cashback">Cash back (rewards for holders)</label>
+        </div>
+        <label for="token-media">Add image or video</label>
+        <input id="token-media" type="file" />
+        <p class="note">
+          Images: max 15 MB (.jpg, .gif, .png recommended). Video: max 30 MB (.mp4 recommended).<br />
+          Resolution: minimum 1000x1000 px for images; 1080p (16:9 or 9:16) for videos.
+        </p>
+        <button class="submit-btn">Create token</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    function showModal() {
+      document.getElementById("modal").style.display = "flex";
+    }
+    function hideModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
