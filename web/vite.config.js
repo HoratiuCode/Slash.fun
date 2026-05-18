@@ -19,6 +19,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: path.join(pagesRoot, 'index.html'),
+        landing: path.join(pagesRoot, 'landing.html'),
         callouts: path.join(pagesRoot, 'callouts.html'),
         live: path.join(pagesRoot, 'live.html'),
         support: path.join(pagesRoot, 'support.html'),
