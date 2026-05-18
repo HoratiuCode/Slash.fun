@@ -1,5 +1,3 @@
-[简体中文](./README_CN.md)
-
 # Slash.fun Smart Contracts
 
 Slash.fun is a Foundry-based smart contract system for launching and trading bonding-curve tokens on Monad.

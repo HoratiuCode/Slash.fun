@@ -1,7 +1,5 @@
 # Support Documentation
 
-[中文](./SUPPORT_CN.md)
-
 ## Table of Contents
 
 - [Getting Help](#getting-help)
@@ -15,7 +13,7 @@
 
 ## Getting Help
 
-If you need help with GNad.Fun, here are the best ways to get support:
+If you need help with slash.fun, here are the best ways to get support:
 
 1. **Documentation**: Check the [README.md](./README.md) for comprehensive documentation
 2. **Issues**: Search existing issues on GitHub to see if your question has been answered
@@ -256,11 +254,8 @@ For more details, see contribution guidelines (if available).
 ## Additional Resources
 
 - [README.md](./README.md) - Main documentation
-- [README_CN.md](./README_CN.md) - Chinese documentation
 - [test/README.md](./test/README.md) - Testing documentation
-- [GitHub Repository](https://github.com/angel10x/Gnad.fun-SmartContract) - Source code
 
 ---
 
 **Note**: For security vulnerabilities, please use responsible disclosure and contact maintainers privately rather than opening a public issue.
-
