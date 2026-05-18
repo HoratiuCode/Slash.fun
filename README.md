@@ -94,6 +94,21 @@ npm run build
 npm run preview
 ```
 
+## Deploy to Vercel
+
+This repository is configured for Vercel with a root-level [`vercel.json`](./vercel.json).
+
+1. Import the repository into Vercel.
+2. Keep the project root at repository root (`Slash.fun`).
+3. Vercel will use:
+   - Install command: `npm --prefix web ci`
+   - Build command: `npm --prefix web run build`
+   - Output directory: `slash_fun_pages/dist`
+
+After deploy, Vercel will serve the multi-page frontend:
+- `/` -> `index.html`
+- `/live.html`, `/chat.html`, `/support.html`, etc.
+
 ## Project Layout
 
 ```text

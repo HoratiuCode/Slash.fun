@@ -1,0 +1,15 @@
+.git
+.github
+cache
+out
+test
+src
+lib
+web/node_modules
+web/dist
+slash_fun_pages/.vite
+slash_fun_pages/dist
+*.t.sol
+foundry.lock
+foundry.toml
+remappings.txt
