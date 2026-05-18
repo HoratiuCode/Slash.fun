@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Terminal page of the slash.fun platform -->
+<!-- More page of the slash.fun platform -->
 <head>
   <meta charset="UTF-8" />
-  <title>slash.fun - Terminal</title>
+  <title>slash.fun - Predictions</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%94%B5%3C/text%3E%3C/svg%3E">
   <link
     rel="stylesheet"
@@ -148,60 +148,27 @@
       color: var(--text-muted);
       border: 1px solid #2b3542;
     }
-    /* Stil pentru terminal */
-    .terminal-container {
+    .section {
       padding: 20px;
-      display: flex;
-      flex-direction: column;
-      height: calc(100vh - 60px - 40px);
     }
-    .terminal {
-      flex: 1;
-      background-color: #1e1e2a;
-      border-radius: 8px;
-      padding: 15px;
-      font-family: "Courier New", Courier, monospace;
-      color: var(--accent);
-      overflow-y: auto;
+    .section h2 {
+      margin-top: 0;
       margin-bottom: 10px;
     }
-    .terminal p {
-      margin: 0;
-      line-height: 1.4;
-    }
-    .command-input {
-      display: flex;
-      align-items: center;
+    .info-card {
       background-color: var(--card-bg);
       border-radius: 8px;
-      padding: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
     }
-    .command-input span {
+    .info-card h3 {
+      margin-top: 0;
       color: var(--accent);
-      margin-right: 6px;
-      font-family: "Courier New", Courier, monospace;
     }
-    .command-input input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: var(--text-light);
-      font-family: "Courier New", Courier, monospace;
-      font-size: 14px;
+    .info-card p {
+      color: var(--text-muted);
+      line-height: 1.5;
     }
-    .command-input button {
-      background-color: var(--accent);
-      color: var(--bg-dark);
-      border: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .command-input button:hover {
-      background-color: var(--accent-hover);
-    }
-    /* Modal pentru creare token */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -295,9 +262,9 @@
         <li><a href="live.html"><i class="fas fa-broadcast-tower"></i>Live</a></li>
         <li><a href="support.html"><i class="fas fa-life-ring"></i>Support</a></li>
         <li><a href="chat.html"><i class="fas fa-comments"></i>Chat</a></li>
-        <li class="active"><a href="terminal.html"><i class="fas fa-terminal"></i>Terminal</a></li>
+        <li><a href="terminal.html"><i class="fas fa-terminal"></i>Terminal</a></li>
         <li><a href="more.html"><i class="fas fa-ellipsis-h"></i>More</a></li>
-        <li><a href="predictions.html"><i class="fas fa-file-alt"></i>Predictions</a></li>
+        <li class="active"><a href="predictions.html"><i class="fas fa-file-alt"></i>Predictions</a></li>
       </ul>
       <div class="create-btn-sidebar" onclick="showModal()">Create</div>
     </nav>
@@ -305,30 +272,39 @@
       <div class="topbar">
         <div class="search-box">
           <i class="fas fa-search"></i>
-          <input type="text" placeholder="Search commands..." />
+          <input type="text" placeholder="Search information..." />
         </div>
         <button class="voice-btn"><i class="fas fa-microphone"></i> Voice chat</button>
         <button class="create-btn" onclick="showModal()">+ Create</button>
         <button class="signin-btn">Sign in</button>
       </div>
-      <!-- Interactive terminal -->
-      <div class="terminal-container">
-        <div class="terminal" id="terminal-output">
-          <p>slash.fun terminal v1.0</p>
-          <p>> help</p>
-          <p>Available commands:</p>
-          <p> - create &lt;name&gt; &lt;ticker&gt; : create a new token</p>
-          <p> - list : display popular tokens</p>
-          <p> - exit : close the terminal</p>
+      <section class="section">
+        <h2>About slash.fun</h2>
+        <div class="info-card">
+          <h3>Our mission</h3>
+          <p>slash.fun is a memecoin launcher on Base, inspired by pump.fun, that lets anyone create and launch tokens quickly without technical knowledge or initial liquidity. Our goal is to democratize access to token creation and support the communities built around them.</p>
         </div>
-        <div class="command-input">
-          <span>&gt;</span>
-          <input id="terminal-input" type="text" placeholder="Enter a command..." onkeydown="if(event.key==='Enter'){runCommand();}" />
-          <button onclick="runCommand()">Run</button>
+        <div class="info-card">
+          <h3>Why Base?</h3>
+          <p>The Base network offers low transaction fees and strong infrastructure backed by Coinbase. With bonding curve models and Uniswap-Base pools, tokens can be traded immediately after launch without needing initial liquidity.</p>
         </div>
-      </div>
+      </section>
+      <section class="section">
+        <h2>Additional features</h2>
+        <div class="info-card">
+          <h3>Mayhem mode</h3>
+          <p>Enable Mayhem mode to generate a wave of trading volume for 24 hours and attract the attention of traders and the community.</p>
+        </div>
+        <div class="info-card">
+          <h3>Tokenized agent</h3>
+          <p>Automate token purchases, buybacks, and scheduled burns to manage supply more efficiently.</p>
+        </div>
+        <div class="info-card">
+          <h3>Cash back for holders</h3>
+          <p>Return a portion of trading fees to token holders to increase loyalty and engagement.</p>
+        </div>
+      </section>
     </div>
-    <!-- Modalul pentru creare token -->
     <div class="modal-overlay" id="modal">
       <div class="modal-content">
         <button class="close-btn" onclick="hideModal()">&times;</button>
@@ -369,36 +345,6 @@
     }
     function hideModal() {
       document.getElementById("modal").style.display = "none";
-    }
-    function runCommand() {
-      const input = document.getElementById('terminal-input');
-      const output = document.getElementById('terminal-output');
-      const command = input.value.trim();
-      if (!command) return;
-      // Show the entered command
-      const cmdLine = document.createElement('p');
-      cmdLine.textContent = '> ' + command;
-      output.appendChild(cmdLine);
-      // Simple demo response
-      let response;
-      if (command.startsWith('create ')) {
-        response = 'Create command accepted. Opening the modal...';
-        showModal();
-      } else if (command === 'list') {
-        response = 'Popular tokens: MemeApe, AI Pepe, Ghostie.';
-      } else if (command === 'help') {
-        response = 'Available commands: create <name> <ticker>, list, exit.';
-      } else if (command === 'exit') {
-        response = 'Closing terminal...';
-      } else {
-        response = 'Unknown command. Type "help" for assistance.';
-      }
-      const respLine = document.createElement('p');
-      respLine.style.color = '#8fa1b5';
-      respLine.textContent = response;
-      output.appendChild(respLine);
-      output.scrollTop = output.scrollHeight;
-      input.value = '';
     }
   </script>
 </body>

@@ -27,6 +27,7 @@ export default defineConfig({
         chat: path.join(pagesRoot, 'chat.html'),
         terminal: path.join(pagesRoot, 'terminal.html'),
         more: path.join(pagesRoot, 'more.html'),
+        predictions: path.join(pagesRoot, 'predictions.html'),
       },
     },
   },
